@@ -1,0 +1,14 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: myapp-readiness-probe
+spec:
+  conatiners:
+    - name: goserver
+      image: web:1.0
+      ports:
+        - containerPort: 80
+  readinessProbe:
+    httpGet:
+      path: /healthz
+      port: 80
